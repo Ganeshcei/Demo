@@ -15,7 +15,7 @@ const config = {
  reporter: [['html', {  
     outputFile:'./test-results/report.html',
     open:'always'
-  }]],
+  }],['allure-playwright']],
 
   projects: [
     {
@@ -29,7 +29,7 @@ const config = {
     {
       name: 'firefox',
       use: { ...devices['Desktop Firefox'],
-      headless:false,
+      headless:true,
       screenshot:'on'
      },
     },
