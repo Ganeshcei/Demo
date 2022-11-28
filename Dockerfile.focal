@@ -1,0 +1,14 @@
+# Use Base Image playwright:bionic
+FROM mcr.microsoft.com/playwright:v1.24.0-focal
+USER root
+RUN mkdir /tests
+COPY . /tests
+WORKDIR /tests
+# Install Playwright dependancies
+RUN npm install
+# # # Install dependencies.
+RUN npx @playwright/test install
+# # # Run Tests
+#RUN npx playwright test --reporter=list
+RUN npx playwright install-deps
+#RUN npx playwright test test/web/CustomerHomologationtest.spec.js
