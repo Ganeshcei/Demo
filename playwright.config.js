@@ -22,7 +22,7 @@ const config = {
       name: 'chromium',
       use: { 
         ...devices['Desktop Chrome'],
-        headless:false,
+        headless:true,
         screenshot:'on'
        },
     },
@@ -36,7 +36,7 @@ const config = {
     {
       name: 'webkit',
       use: { ...devices['Desktop Safari'],
-      headless:false,
+      headless:true,
       screenshot:'on'
      },
     },
