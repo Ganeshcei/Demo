@@ -11,4 +11,4 @@ RUN npx @playwright/test install
 # # # Run Tests
 #RUN npx playwright test --reporter=list
 RUN npx playwright install-deps
-RUN npx playwright test --project=firefox
+RUN npx playwright test
