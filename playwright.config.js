@@ -14,8 +14,8 @@ const config = {
  //reporter: [ ['aggregate-playwright-reporter', { outputFile: 'results.json' }] ],
  reporter: [['html', {  
     outputFile:'./test-results/report.html',
-    open:'always'
-  }]],//['allure-playwright']],
+    open:'never'
+  }],['allure-playwright']],
 
   projects: [
     {
