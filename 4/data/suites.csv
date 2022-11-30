@@ -1,0 +1,7 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Wed Nov 30 12:11:23 GMT 2022","Wed Nov 30 12:11:27 GMT 2022","3450","webkit","example.spec.js","","","","Select the Product ",""
+"passed","Wed Nov 30 12:11:19 GMT 2022","Wed Nov 30 12:11:22 GMT 2022","2578","firefox","example.spec.js","","","","Select the Product ",""
+"passed","Wed Nov 30 12:11:17 GMT 2022","Wed Nov 30 12:11:19 GMT 2022","1202","chromium","example.spec.js","","","","Check out",""
+"passed","Wed Nov 30 12:11:22 GMT 2022","Wed Nov 30 12:11:22 GMT 2022","508","firefox","example.spec.js","","","","Check out",""
+"passed","Wed Nov 30 12:11:16 GMT 2022","Wed Nov 30 12:11:17 GMT 2022","1439","chromium","example.spec.js","","","","Select the Product ",""
+"passed","Wed Nov 30 12:11:27 GMT 2022","Wed Nov 30 12:11:29 GMT 2022","1998","webkit","example.spec.js","","","","Check out",""
