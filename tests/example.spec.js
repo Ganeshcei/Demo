@@ -1,5 +1,11 @@
 // @ts-check
 const { test, expect } = require('@playwright/test');
+const { baseConfig } = require('../baseConfig');
+const { cartPageLocators } = require('../locators/cartPageLocators');
+const { homePageLocators } = require('../locators/homePage');
+const { loginPageLocator } = require('../locators/loginPageLocator');
+const { cartData } = require('../testData/cartData');
+const { loginPage } = require('../testData/loginPage');
 
 let page;
 let browser;
@@ -17,30 +23,36 @@ test.beforeAll(async({browser},testInfo) => {
       dir: testInfo.outputPath('./test-results/videos/'),
     }
 });
+await page.goto(baseConfig.url);
+await page.locator(loginPageLocator.username).fill(loginPage.username);
+await page.locator(loginPageLocator.password).fill(loginPage.password);
+await page.locator(loginPageLocator.loginbutton).click();
+await expect(page).toHaveURL(/inventory/);
 });
-test('Login into application', async ({ }) => {
-  await page.goto("https://www.saucedemo.com/")
-  await page.locator("//*[@data-test='username']").fill("standard_user");
-  await page.locator("//*[@data-test='password']").fill("secret_sauce");
-  await page.locator("//*[@id='login-button']").click();
-  await expect(page).toHaveURL(/inventory/);
-});
-test('Select product and Navigate to cart', async ({ }) => {
-  //*[@id='add-to-cart-sauce-labs-backpack']
-  await page.locator("//*[@id='add-to-cart-sauce-labs-backpack']").click();
-  await page.locator('//*[@class="shopping_cart_link"]').click();
+test('Select the Product ', async ({ }) => {
+
+  await page.locator(cartPageLocators.addCart).click();
+  await page.locator(cartPageLocators.cartBtn).click();
   await expect(page).toHaveURL(/cart/);
-  await page.locator("//*[@id='checkout']").click();
+  await page.locator(cartPageLocators.checkOut).click();
   await expect(page).toHaveURL(/checkout-step-one/);
-  await page.locator("//*[@data-test='firstName']").fill("Ganesh");
-  await page.locator("//*[@data-test='lastName']").fill("D");
-  await page.locator("//*[@data-test='postalCode']").fill("600004");
-  await page.locator("//*[@data-test='continue']").click();
-  await page.locator("//*[@id='finish']").click();
+ 
+});
+test('Check out', async ({ }) => {
+  
+  await page.locator(cartPageLocators.cartDetailsFirstName).fill(cartData.firstName);
+  await page.locator(cartPageLocators.cartDetailsLastName).fill(cartData.lastName);
+  await page.locator(cartPageLocators.cartZipCode).fill(cartData.zipCode);
+  await page.locator(cartPageLocators.cartContinue).click();
+  await page.locator(cartPageLocators.cartFinish).click();
   await expect(page).toHaveURL(/checkout-complete/);
+  await page.locator(cartPageLocators.cartBackToHome).click();
 });
 
 test.afterAll(async ({}, testInfo) => {
+
+  await page.locator(homePageLocators.menuIcon).click();
+  await page.locator(homePageLocators.logOut).click();
   const videoPath = testInfo.outputPath('my-video.webm');
   await Promise.all([
     page.video().saveAs(videoPath),
