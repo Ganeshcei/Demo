@@ -10,7 +10,7 @@ const config = {
   },
   fullyParallel: false,
   workers:1,
-  retries:2,
+//  retries:2,
  //reporter: [ ['aggregate-playwright-reporter', { outputFile: 'results.json' }] ],
  reporter: [['html', {  
     outputFile:'./test-results/report.html',

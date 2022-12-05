@@ -29,7 +29,7 @@ await page.locator(loginPageLocator.password).fill(loginPage.password);
 await page.locator(loginPageLocator.loginbutton).click();
 await expect(page).toHaveURL(/inventory/);
 });
-test.skip('Select the Product ', async ({ }) => {
+test('Select the Product ', async ({ }) => {
 
   await page.locator(cartPageLocators.addCart).click();
   await page.locator(cartPageLocators.cartBtn).click();
