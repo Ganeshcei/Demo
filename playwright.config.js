@@ -9,7 +9,7 @@ const config = {
     timeout: 30*100,
   },
   fullyParallel: false,
-  workers:1,
+  //workers:1,
   retries:2,
  reporter: [['html', {  
     outputFile:'./test-results/report.html',
